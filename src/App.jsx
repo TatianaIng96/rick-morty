@@ -10,26 +10,22 @@ async function fetchEpisodes() {
   return cap;
 }
 
-async function fetchCharacter(data) {
-  const data_cha= []
-  let characters = []
-  data.forEach((element) => {
-    if(data_cha.length === 0){
-      data_cha.push(element.characters.slice(0,10));
-    } else {
-      element.characters.forEach((item,index) => {
-      if(data_cha.find(el => !el.includes(item)) && index < 10){
-        data_cha[0].push(item)
-      }
-      }); 
-    } 
+async function fetchCharacter(episodes) {
+  const data = []
+  const characters = new Set()
+  episodes.forEach(episode => {
+    episode.characters.slice(0, 10).forEach(character => {
+      characters.add(character)
+    })
   });
 
-  for (let i = 0; i < data_cha[0].length; i++) {
-    const response = await fetch(data_cha[0][i])
-    characters.push(response.json())
+  const url = Array.from(characters)
+
+  for (let i = 0; i < url.length; i++) {
+    const response = await fetch(url[i])
+    data.push(response.json())
   }
-  return characters
+  return(data);
 }
 
 function App() {
