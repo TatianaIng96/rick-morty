@@ -16,7 +16,7 @@
 ## Overview :writing_hand:
 
 this is a page where it shows us a list of the first 20 episodes of Rick & Morty where we see the first 10 characters that participated in the episode.
-Link deploy : https://
+Link deploy : https://rick-morty-ten-kappa.vercel.app/
 
 ### Installation :gear:
 
